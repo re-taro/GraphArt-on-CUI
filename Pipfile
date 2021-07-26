@@ -4,10 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-matplotlib = "*"
-numpy = "*"
+matplotlib = "==3.4.2"
+numpy = "==1.21.1"
 
 [dev-packages]
 
 [requires]
 python_version = "3.9"
+
+[scripts]
+init = "pipenv install matplotlib==3.4.2 numpy==1.21.1"
+start = "python graphart"
