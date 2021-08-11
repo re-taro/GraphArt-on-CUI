@@ -2,7 +2,7 @@
 import sys
 
 
-class Expression:
+class ExpressionTemplate:
     def __init__(self):
         self.expType = None
         self.xmin = -100
