@@ -4,43 +4,44 @@ import sys
 
 class ExpressionTemplate:
     def __init__(self):
-        self.expType = None
+        self.expType = '--'
         self.xmin = -100
         self.xmax = 100
         self.ymin = -100
         self.ymax = 100
         self.divisionNumber = 1000
+        self.expFormula = '--'
 
     def expRule(self, expType, xmin, xmax, ymin, ymax, divisionNumber, expFormula):
-        if expType is None:
-            print("式の種類を入力してください。")
-            print("プログラムが正常に動作しないため動作を停止します。")
+        if expType == '--':
+            print('式の種類を入力してください。')
+            print('プログラムが正常に動作しないため動作を停止します。')
             sys.exit()
         else:
             self.expType = expType
-        if xmin is None:
+        if xmin == '--':
             pass
         else:
             self.xmin = xmin
-        if xmax is None:
+        if xmax == '--':
             pass
         else:
             self.xmax = xmax
-        if ymin is None:
+        if ymin == '--':
             pass
         else:
             self.ymin = ymin
-        if ymax is None:
+        if ymax == '--':
             pass
         else:
             self.ymax = ymax
-        if divisionNumber is None:
+        if divisionNumber == '--':
             pass
         else:
             self.divisionNumber = divisionNumber
-        if expFormula is None:
-            print("式の形を入力してください。")
-            print("プログラムが正常に動作しないため動作を停止します。")
+        if expFormula == '--':
+            print('式の形を入力してください。')
+            print('プログラムが正常に動作しないため動作を停止します。')
             sys.exit()
         else:
             self.expFormula = expFormula
