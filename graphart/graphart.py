@@ -2,33 +2,43 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import sys
-import copy
+import os
 from classFile import ExpressionTemplate as expTemp
 
 
 PI = np.pi
-exp = []
+expdata = []
+X = []
+Y = []
+outfile = '../OUTPUT/plot.png'
 
 
 def setup(numOfExp):
     for i in range(numOfExp):
-        exp[i] = expTemp()
-
+        expdata[i] = expTemp()
         print(i + 1 + '番目の式を設定していきます。')
-        typeExp = input('式の種類を入力してください: ')
         minX = input('xの最小値を入力してください: ')
         maxX = input('xの最大値を入力してください: ')
-        minY = input('yの最小値を入力してください: ')
-        maxY = input('yの最大値を入力してください: ')
         dnum = input('分割数を入力してください: ')
         formExp = input('式を入力してください: ')
 
-        exp[i].expRule(typeExp, minX, maxX, minY, maxY, dnum, formExp)
+        expdata[i].expRule(minX, maxX, dnum, formExp)
 
-def drawGraph():
-    canvas = plt.figure(figsize = (4, 4),
-                        dpi = 100,
-                        facecolor = 'w')
+def drawGraph(numOfExp):
+    ax = plt.axes(label='xxx')
+    ax.set_aspect('equal')
+    plt.xticks(np.arange(-100, 100, 2))
+    plt.yticks(np.arange(-100, 100, 2))
+    plt.axis([0, 50, 0, 50])
+    plt.grid(which='major', color='gray', linestyle='--')
+    for i in range(numOfExp):
+        X[i] = np.linspace(expdata[i].echoXmin, expdata[i].echoXmax, expdata[i].echodnum)
+        Y[i] = expdata[i].echoFormula
+        plt.plot(X[i], Y[i])
+    if os.path.isfile(outfile):
+        os.remove(outfile)
+    plt.savefig(outfile)
+
 
 
 
@@ -47,3 +57,6 @@ def main():
         sys.exit()
     while True:
         setup(numOfExp)
+        drawGraph(numOfExp)
+        break
+    sys.exit()
