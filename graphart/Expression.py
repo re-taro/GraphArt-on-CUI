@@ -32,13 +32,13 @@ class ExpressionTemplate:
             self.expFormula = expFormula
 
     def echoXmin(self):
-        return self.xmin
+        return int(self.xmin)
 
     def echoXmax(self):
-        return self.xmax
+        return int(self.xmax)
 
     def echodnum(self):
-        return self.divisionNumber
+        return int(self.divisionNumber)
 
     def echoFormula(self):
-        return self.expFormula
+        return int(self.expFormula)
