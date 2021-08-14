@@ -1,30 +1,30 @@
 # -*- coding: utf-8 -*-
 import sys
 
+from numpy import character
+
 
 class ExpressionTemplate:
     def __init__(self):
         self.xmin = -100
         self.xmax = 100
-        self.ymin = -100
-        self.ymax = 100
-        self.divisionNumber = 1000
-        self.expFormula = '--'
+        self.divisionNumber = 1000000
+        self.expFormula = '000'
 
     def expRule(self, xmin, xmax, divisionNumber, expFormula):
-        if xmin == '--':
+        if xmin == '000':
             pass
         else:
             self.xmin = xmin
-        if xmax == '--':
+        if xmax == '000':
             pass
         else:
             self.xmax = xmax
-        if divisionNumber == '--':
+        if divisionNumber == '000':
             pass
         else:
             self.divisionNumber = divisionNumber
-        if expFormula == '--':
+        if expFormula == '000':
             print('式の形を入力してください。')
             print('プログラムが正常に動作しないため動作を停止します。')
             sys.exit()
@@ -41,4 +41,4 @@ class ExpressionTemplate:
         return int(self.divisionNumber)
 
     def echoFormula(self):
-        return int(self.expFormula)
+        return self.expFormula
